@@ -24,14 +24,8 @@ export function LoginPage() {
       })
       
       if (response.success) {
-        // TODO: 레거시와 동일하게 권한별 페이지 리다이렉트 구현 필요
-        // 현재는 메인 페이지로 리다이렉트
-        if (response.user?.menuDetailPath) {
-          // 레거시의 메뉴 경로가 있으면 해당 경로로 리다이렉트
-          navigate(response.user.menuDetailPath)
-        } else {
-          navigate('/')
-        }
+        // 로그인 성공 시 메인 페이지로 리다이렉트
+        navigate('/')
       } else {
         // 로그인 실패 처리 (레거시와 동일한 메시지)
         setError(response.message || '로그인에 실패했습니다.')
