@@ -11,7 +11,7 @@ interface DrcSearchFormProps {
 }
 
 export function DrcSearchForm({ initialParams, onSearch, isLoading }: DrcSearchFormProps) {
-  const { register, handleSubmit, watch, setValue } = useForm<DrcMainSearchParams>({
+  const { register, handleSubmit, setValue } = useForm<DrcMainSearchParams>({
     defaultValues: initialParams
   })
   
@@ -47,7 +47,7 @@ export function DrcSearchForm({ initialParams, onSearch, isLoading }: DrcSearchF
         <label className="block text-sm font-medium text-gray-700 mb-1">
           회사구분
         </label>
-        <Select onValueChange={(value) => setValue('companyType', value)}>
+        <Select onValueChange={(value: string) => setValue('companyType', value)}>
           <SelectTrigger>
             <SelectValue placeholder="전체" />
           </SelectTrigger>
@@ -63,7 +63,7 @@ export function DrcSearchForm({ initialParams, onSearch, isLoading }: DrcSearchF
         <label className="block text-sm font-medium text-gray-700 mb-1">
           상태코드
         </label>
-        <Select onValueChange={(value) => setValue('statusCode', value)}>
+        <Select onValueChange={(value: string) => setValue('statusCode', value)}>
           <SelectTrigger>
             <SelectValue placeholder="전체" />
           </SelectTrigger>

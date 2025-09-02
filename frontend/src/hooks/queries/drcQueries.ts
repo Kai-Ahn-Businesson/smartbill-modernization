@@ -60,7 +60,7 @@ export const useDrcMainByNo = (drcNo: string) => {
 export const useDownloadDrcMainExcel = () => {
   return useMutation({
     mutationFn: drcService.downloadDrcMainUserListExcel,
-    onSuccess: (blob, params) => {
+    onSuccess: (blob) => {
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url

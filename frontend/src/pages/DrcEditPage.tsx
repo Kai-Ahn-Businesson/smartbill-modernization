@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useUpdateDrcMain, useDrcMainByNo } from '@/hooks/queries/drcQueries'
-import type { DrcMainCreateRequest } from '@/types/drc'
+import type { DrcMainCreateRequest, DrcMainUser } from '@/types/drc'
 
 export function DrcEditPage() {
   const navigate = useNavigate()
@@ -23,8 +23,19 @@ export function DrcEditPage() {
   const { data: drcData, isLoading, error } = useDrcMainByNo(drcNo!)
   const updateDrcMain = useUpdateDrcMain()
   
+  const isDrcMainUser = (data: any): data is DrcMainUser => {
+    return data && typeof data === 'object' && 
+           typeof data.basicDate === 'string' &&
+           typeof data.comRegno === 'string' &&
+           typeof data.comName === 'string' &&
+           typeof data.comType === 'string' &&
+           typeof data.memName === 'string' &&
+           typeof data.receivableBalance === 'number' &&
+           typeof data.statusCode === 'string'
+  }
+
   useEffect(() => {
-    if (drcData) {
+    if (isDrcMainUser(drcData)) {
       setFormData({
         basicDate: drcData.basicDate,
         comRegno: drcData.comRegno,
@@ -37,7 +48,7 @@ export function DrcEditPage() {
     }
   }, [drcData])
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
     if (!drcNo) return
@@ -103,7 +114,7 @@ export function DrcEditPage() {
                 <Input
                   type="date"
                   value={formData.basicDate}
-                  onChange={(e) => handleInputChange('basicDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('basicDate', e.target.value)}
                   required
                 />
               </div>
@@ -115,7 +126,7 @@ export function DrcEditPage() {
                 <Input
                   type="text"
                   value={formData.comRegno}
-                  onChange={(e) => handleInputChange('comRegno', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('comRegno', e.target.value)}
                   placeholder="000-00-00000"
                   required
                 />
@@ -128,7 +139,7 @@ export function DrcEditPage() {
                 <Input
                   type="text"
                   value={formData.comName}
-                  onChange={(e) => handleInputChange('comName', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('comName', e.target.value)}
                   placeholder="회사명을 입력하세요"
                   required
                 />
@@ -138,7 +149,7 @@ export function DrcEditPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   회사구분 *
                 </label>
-                <Select value={formData.comType} onValueChange={(value) => handleInputChange('comType', value)}>
+                <Select value={formData.comType} onValueChange={(value: string) => handleInputChange('comType', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="회사구분을 선택하세요" />
                   </SelectTrigger>
@@ -156,7 +167,7 @@ export function DrcEditPage() {
                 <Input
                   type="text"
                   value={formData.memName}
-                  onChange={(e) => handleInputChange('memName', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('memName', e.target.value)}
                   placeholder="담당자명을 입력하세요"
                   required
                 />
@@ -169,7 +180,7 @@ export function DrcEditPage() {
                 <Input
                   type="number"
                   value={formData.receivableBalance}
-                  onChange={(e) => handleInputChange('receivableBalance', parseFloat(e.target.value) || 0)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('receivableBalance', parseFloat(e.target.value) || 0)}
                   placeholder="0"
                   min="0"
                   step="0.01"

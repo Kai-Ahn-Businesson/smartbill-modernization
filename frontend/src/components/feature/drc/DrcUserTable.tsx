@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Edit, Trash2, Eye } from 'lucide-react'
+import { Edit, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import type { DrcMainUser } from '@/types/drc'
