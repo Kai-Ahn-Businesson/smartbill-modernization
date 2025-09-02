@@ -1,4 +1,4 @@
-import { Menu, Bell, User, Settings } from 'lucide-react'
+import { Menu, Bell, User, Settings, LogOut } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -9,12 +9,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useAuth } from '@/hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 interface HeaderProps {
   onMenuClick: () => void
 }
 
 export function Header({ onMenuClick }: HeaderProps) {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+  
+  const handleLogout = async () => {
+    try {
+      await logout()
+      navigate('/login')
+    } catch (error) {
+      console.error('Logout error:', error)
+      // 오류가 발생해도 로그인 페이지로 이동
+      navigate('/login')
+    }
+  }
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -53,9 +68,14 @@ export function Header({ onMenuClick }: HeaderProps) {
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">관리자</p>
+                  <p className="text-sm font-medium leading-none">
+                    {user?.adminName || '관리자'}
+                  </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    admin@smartbill.com
+                    {user?.adminId} ({user?.adminTeam}팀)
+                  </p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    권한 레벨: {user?.levelCode}
                   </p>
                 </div>
               </DropdownMenuLabel>
@@ -69,8 +89,9 @@ export function Header({ onMenuClick }: HeaderProps) {
                 <span>설정</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                로그아웃
+              <DropdownMenuItem onClick={handleLogout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>로그아웃</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

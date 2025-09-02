@@ -41,3 +41,9 @@ logging:
     com.smartbill: DEBUG
     org.springframework.security: DEBUG
     org.springframework.jdbc: DEBUG
+
+# TODO: 향후 환경변수로 관리 필요
+app:
+  jwt:
+    secret: SmartBillSecretKeyForJWTTokenGenerationMustBe256BitsLongForHS256Algorithm
+    expiration: 3600000  # 1시간 (레거시 쿠키와 동일)
