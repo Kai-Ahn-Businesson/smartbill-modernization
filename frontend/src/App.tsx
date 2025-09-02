@@ -7,6 +7,13 @@ import { DrcCreatePage } from './pages/DrcCreatePage'
 import { DrcEditPage } from './pages/DrcEditPage'
 import { LoginPage } from './pages/LoginPage'
 import { DashboardPage } from './pages/DashboardPage'
+import { CompanyPage } from './pages/CompanyPage'
+import { UsersPage } from './pages/UsersPage'
+import { SchedulePage } from './pages/SchedulePage'
+import { ReportsPage } from './pages/ReportsPage'
+import { MailPage } from './pages/MailPage'
+import { SettingsPage } from './pages/SettingsPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 import './index.css'
 
 const queryClient = new QueryClient({
@@ -31,7 +38,14 @@ function App() {
               <Route path="create" element={<DrcCreatePage />} />
               <Route path="edit/:drcNo" element={<DrcEditPage />} />
             </Route>
+            <Route path="company" element={<CompanyPage />} />
+            <Route path="users" element={<UsersPage />} />
+            <Route path="schedule" element={<SchedulePage />} />
+            <Route path="reports" element={<ReportsPage />} />
+            <Route path="mail" element={<MailPage />} />
+            <Route path="settings" element={<SettingsPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
