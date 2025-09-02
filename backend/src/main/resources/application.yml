@@ -3,9 +3,9 @@ spring:
     name: smartbill-backend
   
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=SB_DRC;encrypt=true;trustServerCertificate=true
-    username: sa
-    password: YourPassword123!
+    url: jdbc:sqlserver://192.168.100.204:1433;databaseName=office;encrypt=true;trustServerCertificate=true
+    username: applicationuser
+    password: ApplicationUser2580
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     
   hikari:
