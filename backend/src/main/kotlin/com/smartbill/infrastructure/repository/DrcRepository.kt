@@ -14,6 +14,7 @@ class DrcRepository(private val spAdapter: StoredProcedureAdapter) {
             DrcMainUser::class.java
         )
     }
+
     
     fun getDrcMainUserListForExcel(params: DrcMainSearchParams): List<DrcMainUserExcel> {
         return spAdapter.executeQuery(

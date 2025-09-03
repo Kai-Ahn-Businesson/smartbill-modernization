@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Users, FileText, Building2, TrendingUp } from 'lucide-react'
+import { mockDashboardStats } from '@/mocks/mockData'
 
 export function DashboardPage() {
   return (
@@ -18,7 +19,7 @@ export function DashboardPage() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,234</div>
+            <div className="text-2xl font-bold">{mockDashboardStats.statusDistribution.reduce((sum, item) => sum + item.count, 0).toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -31,7 +32,7 @@ export function DashboardPage() {
             <Building2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">567</div>
+            <div className="text-2xl font-bold">{mockDashboardStats.totalCompanies.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               +12.5% from last month
             </p>
@@ -44,7 +45,7 @@ export function DashboardPage() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">89</div>
+            <div className="text-2xl font-bold">{mockDashboardStats.activeUsers.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               +5.2% from last month
             </p>
@@ -53,11 +54,11 @@ export function DashboardPage() {
         
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">월 처리량</CardTitle>
+            <CardTitle className="text-sm font-medium">월 매출</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">2,345</div>
+            <div className="text-2xl font-bold">₩{mockDashboardStats.monthlyRevenue.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               +18.3% from last month
             </p>
@@ -75,18 +76,12 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">대기</span>
-                <span className="text-sm text-gray-500">45건</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">처리중</span>
-                <span className="text-sm text-gray-500">23건</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">완료</span>
-                <span className="text-sm text-gray-500">156건</span>
-              </div>
+              {mockDashboardStats.statusDistribution.map((status) => (
+                <div key={status.status} className="flex items-center justify-between">
+                  <span className="text-sm font-medium">{status.status}</span>
+                  <span className="text-sm text-gray-500">{status.count}건</span>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
