@@ -74,7 +74,7 @@ const menuItems = [
         icon: Calendar
     },
     {
-        path: '/users',
+        path: '/users2',
         label: '고객 지원',
         icon: Users
     },
