@@ -22,11 +22,15 @@ const menuItems = [
         label: '대시보드',
         icon: Home
     },
+/*
+
     {
         path: '/drc/main',
         label: '(수정중)',
         icon: FileText
     },
+*/
+
     {
         path: '/company',
         label: 'SB 고객 관리',
@@ -45,17 +49,17 @@ const menuItems = [
     },
     {
         path: '/dummy4',
-        label: '서비스 현황',
+        label: '서비스 현황(x)',
         icon: FileText
     },
     {
         path: '/dummy5',
-        label: '연동 협업 관리',
+        label: '연동 협업 관리(x)',
         icon: FileText
     },
     {
         path: '/dummy6',
-        label: '연동/허브 업체 관리',
+        label: '연동/허브 업체 관리(x)',
         icon: FileText
     },
 
