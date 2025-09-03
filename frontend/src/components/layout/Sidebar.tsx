@@ -24,7 +24,7 @@ const menuItems = [
   },
   {
     path: '/drc/main',
-    label: 'DRC 관리',
+    label: '(수정중)',
     icon: FileText
   },
   {
