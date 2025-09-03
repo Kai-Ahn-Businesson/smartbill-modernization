@@ -20,7 +20,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false, // Vercel에서는 sourcemap 비활성화로 빌드 시간 단축
     rollupOptions: {
       output: {
         manualChunks: {
@@ -30,6 +30,14 @@ export default defineConfig({
         },
       },
     },
+  },
+  // Vercel 빌드 최적화
+  esbuild: {
+    drop: ['console', 'debugger'], // production에서 console.log 제거
+  },
+  // 환경 변수 기본값 설정
+  define: {
+    'process.env.VITE_MOCK_MODE': JSON.stringify(process.env.VITE_MOCK_MODE || 'true'),
   },
   test: {
     globals: true,
