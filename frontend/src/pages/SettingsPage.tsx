@@ -7,9 +7,9 @@ export function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">시스템 설정</h1>
+        <h1 className="text-3xl font-bold text-gray-900">설정</h1>
         <p className="mt-2 text-gray-600">
-          시스템 전반의 설정을 관리할 수 있습니다.
+          스마트빌 어드민 설정을 관리할 수 있습니다.
         </p>
       </div>
 
