@@ -8,9 +8,9 @@ export function SchedulePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">스케줄</h1>
+          <h1 className="text-3xl font-bold text-gray-900">광고/마케팅 운영관리</h1>
           <p className="mt-2 text-gray-600">
-            시스템 작업 스케줄과 일정을 관리할 수 있습니다.
+              광고/마케팅 운영관리할 수 있습니다.
           </p>
         </div>
         <Button className="flex items-center space-x-2">
