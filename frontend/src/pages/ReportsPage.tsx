@@ -8,9 +8,9 @@ export function ReportsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">리포트</h1>
+          <h1 className="text-3xl font-bold text-gray-900">SB 운영 관리</h1>
           <p className="mt-2 text-gray-600">
-            시스템 현황과 통계 리포트를 확인할 수 있습니다.
+            스마트빌 서비스 운영에 대한 관리 화면입니다.
           </p>
         </div>
         <div className="flex space-x-2">

@@ -9,9 +9,9 @@ export function MailPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">메일 관리</h1>
+          <h1 className="text-3xl font-bold text-gray-900">연동 서비스 관리</h1>
           <p className="mt-2 text-gray-600">
-            시스템 알림과 메시지를 관리할 수 있습니다.
+           각종 연동에 대한 서비스를 관리할 수 있습니다.
           </p>
         </div>
         <Button className="flex items-center space-x-2">
