@@ -15,7 +15,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">총 DRC 건수</CardTitle>
+            <CardTitle className="text-sm font-medium">총 세금 계산서 건수</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -69,9 +69,9 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>최근 DRC 처리 현황</CardTitle>
+            <CardTitle>최근 세금계산서 처리 현황</CardTitle>
             <CardDescription>
-              최근 7일간의 DRC 처리 현황입니다.
+              최근 7일간의 세금계산서 처리 현황입니다.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -98,7 +98,7 @@ export function DashboardPage() {
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                 <div>
-                  <p className="text-sm font-medium">DRC 처리 완료</p>
+                  <p className="text-sm font-medium">세금계산서 처리 완료</p>
                   <p className="text-xs text-gray-500">2분 전</p>
                 </div>
               </div>
